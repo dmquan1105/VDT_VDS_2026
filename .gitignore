@@ -1,0 +1,9 @@
+.vscode
+
+data
+
+*.docx
+
+.DS_Store
+
+__MACOSX
