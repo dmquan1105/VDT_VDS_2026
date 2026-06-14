@@ -24,7 +24,7 @@ Tập `CustomerID` xuất hiện nhất quán trên `dts_train`, `dts_holdout`, 
 
 ## 2. ERD logic
 
-<img src="../figures/ERD.png" alt="ERD" width="70%"/>
+<img src="../figures/ERD.png" alt="ERD" width="50%"/>
 
 _Hình 1. ERD của bộ dữ liệu._
 
