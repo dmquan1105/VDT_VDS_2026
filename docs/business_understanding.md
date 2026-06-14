@@ -6,6 +6,17 @@
 
 Device Trust Score (DTS) là một điểm số tổng hợp (0–1000) lượng hóa mức độ tin cậy của một thiết bị/thuê bao, được xây dựng từ dữ liệu viễn thông và dữ liệu định danh.
 
+### Thang điểm DTS:
+
+**DTS có thang 0–1000 (điểm cao là đáng tin), tổng hợp từ bốn trụ:**
+
+| Trụ điểm                   | Trọng số gợi ý | Tín hiệu chính                                                                         |
+| :------------------------- | :------------: | :------------------------------------------------------------------------------------- |
+| **Device Integrity**       |      25%       | `IsRooted`, `IsEmulator`, `TAC grey/clone`, `DeviceAgeDays`                            |
+| **SIM Stability**          |      30%       | `SIMAgeDays`, `SIMSwapCount12M`, `DaysSinceLastSIMSwap`, `PhoneNumberAgeDays`          |
+| **Behavioral Consistency** |      25%       | `HomeLocationStability`, `DistinctIP30d`, `GeoVelocityAlerts30d`, `NightActivityRatio` |
+| **Identity Confidence**    |      20%       | `KYCLevel`, `IDDocMatchScore`, `FaceMatchScore`, `NumAccountsLinkedToDevice`           |
+
 ## 2. Use Cases
 
 ### KYC
