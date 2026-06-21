@@ -60,3 +60,7 @@ sẽ tạo môi trường đúng, sử dụng:
 pyproject.toml
 uv.lock
 ```
+
+## Thứ tự notebook week 2:
+
+`unsupervised.ipynb` -> `clustering.ipynb` -> `dts_unsup.ipynb`
