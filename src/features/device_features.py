@@ -140,24 +140,35 @@ def build_device_features(
         .reset_index()
     )
     
-    # Emulator / Generic / Clone qua TAC catalog
+    # Device type signals from the TAC catalog.
     brand = df["DeviceBrand"].fillna("").astype(str).str.lower()
     model = df["DeviceModel"].fillna("").astype(str).str.lower()
     os_name = df["DeviceOS"].fillna("").astype(str).str.lower()
-    
-    suspicious_catalog_pattern = (
-        brand.str.contains("generic", regex=True)
-        | model.str.contains("clone|emulator|x86", regex=True)
-        | os_name.str.contains("feature|kaios", regex=True)
-    )
 
-    df["is_emulator_session"] = suspicious_catalog_pattern.astype(int)
-    
-    emulator_features = (
+    # Keep emulator, generic/clone, and feature-phone signals separate.
+    # Feature phones (for example, KaiOS) are not emulators by themselves.
+    df["is_emulator_session"] = (
+        model.str.contains("emulator|x86", regex=True)
+    ).astype(int)
+    generic_or_clone_pattern = (
+        brand.str.contains("generic", regex=True)
+        | model.str.contains("clone", regex=True)
+    )
+    df["is_generic_or_clone_session"] = (
+        generic_or_clone_pattern
+        & df["is_emulator_session"].eq(0)
+    ).astype(int)
+    df["is_feature_phone_session"] = (
+        os_name.str.contains("feature|kaios", regex=True)
+    ).astype(int)
+
+    catalog_device_features = (
         df.groupby("CustomerID")
         .agg(
             is_emulator=("is_emulator_session", "max"),
             emulator_session_ratio=("is_emulator_session", "mean"),
+            is_generic_or_clone=("is_generic_or_clone_session", "max"),
+            is_feature_phone=("is_feature_phone_session", "max"),
         )
         .reset_index()
     )
@@ -194,7 +205,7 @@ def build_device_features(
     )
     
     # TAC grey/clone proxy
-    # - Catalog nói là emulator/generic/clone
+    # - Catalog nói là emulator, generic hoặc clone
     # - hoặc low-tier + IMEI bị dùng bởi >=4 account
     # - hoặc rooted + IMEI bị dùng bởi >=4 account
     
@@ -210,7 +221,7 @@ def build_device_features(
         .merge(observed_device_days, on="CustomerID", how="left")
         .merge(device_tier_features, on="CustomerID", how="left")
         .merge(device_catalog_missing_features, on="CustomerID", how="left")
-        .merge(emulator_features, on="CustomerID", how="left")
+        .merge(catalog_device_features, on="CustomerID", how="left")
         .merge(tac_features, on="CustomerID", how="left")
     )
 
@@ -230,6 +241,8 @@ def build_device_features(
         "low_tier_device_flag",
         "is_emulator",
         "emulator_session_ratio",
+        "is_generic_or_clone",
+        "is_feature_phone",
         "tac_customer_count_max",
         "tac_imei_count_max",
         "tac_customer_per_imei_max",
@@ -242,6 +255,7 @@ def build_device_features(
         
     features["tac_grey_clone_flag"] = (
         (features["is_emulator"] == 1)
+        | (features["is_generic_or_clone"] == 1)
         | (
             (features["low_tier_device_flag"] == 1)
             & (features["high_shared_imei_flag"] == 1)
@@ -254,6 +268,7 @@ def build_device_features(
 
     features["tac_risk_score"] = (
         2 * features["is_emulator"]
+        + 1 * features["is_generic_or_clone"]
         + 1 * features["low_tier_device_flag"]
         + 1 * features["high_shared_imei_flag"]
         + 1 * features["is_rooted"]

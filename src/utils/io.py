@@ -6,8 +6,12 @@ def load_raw_data(base_dir: str | Path = "../data") -> dict:
     base_dir = Path(base_dir)
 
     return {
-        "device_catalog": pd.read_csv(base_dir / "device_catalog.csv"),
-        "device_sessions": pd.read_csv(base_dir / "device_sessions.csv"),
+        "device_catalog": pd.read_csv(
+            base_dir / "device_catalog.csv", dtype={"TAC": "string"}
+        ),
+        "device_sessions": pd.read_csv(
+            base_dir / "device_sessions.csv", dtype={"IMEI": "string"}
+        ),
         "dts_holdout": pd.read_csv(base_dir / "dts_holdout.csv"),
         "dts_train": pd.read_csv(base_dir / "dts_train.csv"),
         "kyc_records": pd.read_csv(base_dir / "kyc_records.csv"),

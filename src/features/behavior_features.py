@@ -174,7 +174,8 @@ def build_behavior_features(
     )
 
     recent_df["night_session"] = (
-        recent_df["SessionHour"].between(0, 5)
+        (recent_df["SessionHour"] >= 22)
+        | (recent_df["SessionHour"] <= 4)
     ).astype(int)
 
     night_ratio_30d = (

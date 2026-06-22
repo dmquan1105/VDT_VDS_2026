@@ -94,13 +94,15 @@ Các tín hiệu này hỗ trợ phát hiện bốn fraud archetype chính:
 | `low_tier_device_flag`          | `max(DeviceTier >= 3)`                                                    | Cờ nhận diện khách hàng từng dùng thiết bị low-tier                    | Device      |
 | `device_catalog_missing_ratio`  | `mean(missing DeviceTier/DeviceBrand/DeviceModel/DeviceOS)`               | Tỷ lệ session không map được catalog, có thể phản ánh TAC lạ hoặc dữ liệu thiết bị yếu | Device      |
 | `device_catalog_missing_any`    | `max(missing DeviceTier/DeviceBrand/DeviceModel/DeviceOS)`                | Cờ nhận diện khách hàng từng có thiết bị thiếu thông tin catalog       | Device      |
-| `is_emulator`                   | `max(pattern từ DeviceBrand/DeviceModel/DeviceOS)`                        | Nhận diện emulator, thiết bị generic, clone hoặc OS bất thường         | Device      |
-| `emulator_session_ratio`        | `mean(is_emulator_session)`                                               | Đo cường độ sử dụng emulator/generic device                            | Device      |
+| `is_emulator`                   | `max(DeviceModel chứa emulator hoặc x86)`                                 | Nhận diện riêng thiết bị giả lập                                       | Device      |
+| `emulator_session_ratio`        | `mean(is_emulator_session)`                                               | Đo tỷ lệ session dùng thiết bị giả lập                                 | Device      |
+| `is_generic_or_clone`           | `max(generic/clone nhưng không phải emulator)`                            | Phân tách thiết bị generic/clone khỏi emulator                         | Device      |
+| `is_feature_phone`              | `max(DeviceOS chứa feature hoặc kaios)`                                   | Nhận diện feature phone/KaiOS; không coi đây là emulator               | Device      |
 | `tac_customer_count_max`        | `max(nunique(CustomerID) theo TAC)`                                       | TAC xuất hiện ở nhiều khách hàng có thể là dấu hiệu clone/farm         | Device      |
 | `tac_imei_count_max`            | `max(nunique(IMEI) theo TAC)`                                             | TAC có nhiều IMEI giúp nhận diện cụm thiết bị cùng model               | Device      |
 | `tac_customer_per_imei_max`     | `max(tac_customer_count / tac_imei_count)`                                | Chuẩn hóa mức độ lan truyền khách hàng trên từng cụm TAC               | Device      |
-| `tac_grey_clone_flag`           | `is_emulator OR (low_tier_device_flag AND high_shared_imei_flag) OR (is_rooted AND high_shared_imei_flag)` | Cờ tổng hợp cho thiết bị grey-market, clone, emulator hoặc farm        | Device      |
-| `tac_risk_score`                | `2*is_emulator + low_tier_device_flag + high_shared_imei_flag + is_rooted` | Điểm rủi ro thiết bị tổng hợp từ các tín hiệu mạnh                     | Device      |
+| `tac_grey_clone_flag`           | `is_emulator OR is_generic_or_clone OR (low_tier_device_flag AND high_shared_imei_flag) OR (is_rooted AND high_shared_imei_flag)` | Cờ tổng hợp cho thiết bị grey-market, clone, emulator hoặc farm        | Device      |
+| `tac_risk_score`                | `2*is_emulator + is_generic_or_clone + low_tier_device_flag + high_shared_imei_flag + is_rooted` | Điểm rủi ro thiết bị tổng hợp từ các tín hiệu mạnh                     | Device      |
 
 ---
 
@@ -203,6 +205,7 @@ Nhóm biến này không được tính lại trong `src/features/*_features.py`
 | `is_rooted`                     |
 | `is_emulator`                   |
 | `emulator_session_ratio`        |
+| `is_generic_or_clone`           |
 | `datacenter_ratio`              |
 | `vpn_proxy_ratio`               |
 | `datacenter_ratio_30d`          |
@@ -281,10 +284,10 @@ Nhóm biến này không được tính lại trong `src/features/*_features.py`
 ```text
 Identity Confidence:       5 features
 SIM Stability:             8 features
-Device Integrity:         22 features
+Device Integrity:         24 features
 Behavioral Consistency:   25 features
 --------------------------------------
-Tổng cộng:                60 features
+Tổng cộng:                62 features
 ```
 
 Bộ feature này bao phủ bốn fraud archetype chính và tận dụng tín hiệu từ SIM, thiết bị, KYC, TAC/catalog và hành vi truy cập. Các feature mới bổ sung giúp tăng khả năng phát hiện rủi ro theo thời gian gần, nhận diện thiết bị dùng chung ở mức nghiêm trọng, phát hiện emulator/clone device và lượng hóa các cụm thiết bị bất thường theo TAC.
