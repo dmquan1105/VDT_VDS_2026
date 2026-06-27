@@ -1,0 +1,6 @@
+model_name,rows,path
+logistic_tuned,20000,/Users/duongminhquan/Documents/VDT_VDS_2026/outputs/supervised/submit/logistic.csv
+gbm_tuned,20000,/Users/duongminhquan/Documents/VDT_VDS_2026/outputs/supervised/submit/gbm.csv
+lgbm_tuned,20000,/Users/duongminhquan/Documents/VDT_VDS_2026/outputs/supervised/submit/lgbm.csv
+xgb_tuned,20000,/Users/duongminhquan/Documents/VDT_VDS_2026/outputs/supervised/submit/xgb.csv
+stacking_tuned,20000,/Users/duongminhquan/Documents/VDT_VDS_2026/outputs/supervised/submit/stacking.csv

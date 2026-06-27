@@ -228,3 +228,7 @@ data
 __MACOSX
 
 draft.ipynb
+
+.codegraph
+
+outputs/supervised/mlruns

@@ -29,6 +29,22 @@ python -m ipykernel install --user --name vdt-vds-2026 --display-name "Python (V
 uv sync
 ```
 
+### Lưu ý macOS cho LightGBM/XGBoost
+
+LightGBM và XGBoost dùng native binary cần OpenMP runtime. Trên macOS, nếu notebook báo thiếu `libomp.dylib`, cài thêm:
+
+```bash
+brew install libomp
+```
+
+Sau đó restart kernel/notebook và chạy lại. Nếu vẫn lỗi import, reinstall hai package trong môi trường hiện tại:
+
+```bash
+uv pip install --force-reinstall lightgbm xgboost
+```
+
+Nếu chưa cài `libomp`, các notebook vẫn có thể chạy Logistic Regression và sklearn Gradient Boosting; phần LightGBM/XGBoost sẽ được skip.
+
 Hoặc:
 
 ```bash
