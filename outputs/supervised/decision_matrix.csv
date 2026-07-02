@@ -1,0 +1,11 @@
+use_case,score_driver,policy_segment,rule,action,rationale
+KYC,DTS,Top 30% DTS,DTS >= kyc_fast_cutoff (1000),fast_ekyc,DTS cao là đáng tin; ngưỡng đề xuất dựa trên phân phối điểm holdout.
+KYC,DTS,Bottom 5% DTS,DTS <= kyc_reject_cutoff (766),reject_or_enhanced_review,Nhóm DTS thấp nhất cần enhanced review; business có thể chỉnh theo khẩu vị rủi ro.
+KYC,DTS,Middle DTS,otherwise,additional_verification,"Không đủ tin cậy để fast eKYC, nhưng cũng chưa phải nhóm reject/enhanced-review."
+Fraud Detection,P_fraud,Top 0.5% P_fraud,P_fraud >= fraud_decline_cutoff_p (1),decline_or_block,Nhóm cực rủi ro; cần strong fraud signals và phê duyệt business trước khi block.
+Fraud Detection,P_fraud,Top 5% P_fraud excluding decline,P_fraud >= fraud_review_cutoff_p (0.09120521),manual_review,Dùng P_fraud để giữ đúng operating point review khoảng 5%.
+Fraud Detection,P_fraud,Top 20% P_fraud excluding review,P_fraud >= fraud_stepup_cutoff_p (0.00826757),step_up_authentication,Rủi ro tăng nhưng chưa vào hàng đợi manual review.
+Fraud Detection,P_fraud,Lower 80% P_fraud,otherwise,approve,Không có tín hiệu đủ mạnh để step-up hoặc review theo policy hiện tại.
+Credit Input,DTS,Top 30% DTS,DTS >= credit_high_cutoff (1000),normal_credit_flow_with_low_device_risk,"DTS chỉ là feature bổ sung/risk overlay, không thay thế credit score."
+Credit Input,DTS,Bottom 10% DTS,DTS <= credit_low_cutoff (858),fraud_review_or_step_up_before_credit_decision,Không auto reject tín dụng một mình; cần xử lý fraud/device-risk trước quyết định credit.
+Credit Input,DTS,Middle DTS,otherwise,use_dts_as_auxiliary_credit_feature,DTS được dùng như biến phụ trợ trong credit model hoặc risk overlay.

@@ -1,0 +1,159 @@
+feature_name,dtype,role,input_status,notes
+CustomerID,int64,ID / Entity Key,Exclude (ID Column),Unique identifier for each customer
+kyc_level_ord,int64,Identity Confidence,Input Feature,Derived from KYC records
+has_face_score,int64,Identity Confidence,Input Feature,Derived from KYC records
+has_iddoc_score,int64,Identity Confidence,Input Feature,Derived from KYC records
+face_match_score,float64,Identity Confidence,Input Feature,Derived from KYC records
+id_doc_match_score,float64,Identity Confidence,Input Feature,Derived from KYC records
+phone_number_age_days,int64,SIM Stability,Input Feature,Derived from SIM events history
+sim_swap_count_total,int64,SIM Stability,Input Feature,Derived from SIM events history
+sim_swap_count_7d,int64,SIM Stability,Input Feature,Derived from SIM events history
+sim_swap_count_30d,int64,SIM Stability,Input Feature,Derived from SIM events history
+sim_swap_count_90d,int64,SIM Stability,Input Feature,Derived from SIM events history
+sim_swap_count_12m,int64,SIM Stability,Input Feature,Derived from SIM events history
+days_since_last_sim_swap,int64,SIM Stability,Input Feature,Derived from SIM events history
+iccid_count,int64,SIM Stability,Input Feature,Derived from SIM events history
+port_in_flag,int64,SIM Stability,Input Feature,Derived from SIM events history
+recent_sim_change_flag,int64,SIM Stability,Input Feature,Derived from SIM events history
+num_imeis_90d,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+max_customers_per_imei,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+num_accounts_linked_to_device,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+shared_imei_flag,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+high_shared_imei_flag,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+rooted_session_ratio,float64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+is_rooted,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+observed_device_days,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+device_tier_mean,float64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+device_tier_min,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+device_tier_max,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+low_tier_session_ratio,float64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+low_tier_device_flag,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+device_catalog_missing_ratio,float64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+device_catalog_missing_any,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+is_emulator,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+emulator_session_ratio,float64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+is_generic_or_clone,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+is_feature_phone,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+tac_customer_count_max,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+tac_imei_count_max,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+tac_customer_per_imei_max,float64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+tac_grey_clone_flag,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+tac_risk_score,int64,Device Integrity,Input Feature,Derived from device sessions and device catalog
+distinct_ip_count,int64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+distinct_country_count,int64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+datacenter_ratio,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+vpn_proxy_ratio,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+non_residential_ratio,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+home_cell_ratio,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+night_session_ratio,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+active_days_90d,int64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+total_sessions,int64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+avg_sessions_per_day,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+geo_velocity_alerts,int64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+geo_velocity_flag,int64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+days_since_first_seen,int64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+distinct_ip_7d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+distinct_country_7d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+datacenter_ratio_7d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+vpn_proxy_ratio_7d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+non_residential_ratio_7d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+home_cell_ratio_7d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+night_session_ratio_7d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+active_days_7d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+total_sessions_7d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+avg_sessions_per_day_7d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+geo_velocity_alerts_7d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+geo_velocity_flag_7d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+distinct_ip_30d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+distinct_country_30d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+datacenter_ratio_30d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+vpn_proxy_ratio_30d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+non_residential_ratio_30d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+home_cell_ratio_30d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+night_session_ratio_30d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+active_days_30d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+total_sessions_30d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+avg_sessions_per_day_30d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+geo_velocity_alerts_30d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+geo_velocity_flag_30d,float64,Behavioral Consistency,Input Feature,Derived from session activity behavior and geographic/network stability
+MonthlyRevenue,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+MonthlyMinutes,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+TotalRecurringCharge,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+DirectorAssistedCalls,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+OverageMinutes,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+RoamingCalls,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+PercChangeMinutes,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+PercChangeRevenues,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+DroppedCalls,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+BlockedCalls,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+UnansweredCalls,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+CustomerCareCalls,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+ThreewayCalls,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+ReceivedCalls,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+OutboundCalls,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+InboundCalls,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+PeakCallsInOut,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+OffPeakCallsInOut,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+DroppedBlockedCalls,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+CallForwardingCalls,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+CallWaitingCalls,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+MonthsInService,int64,Customer Profile,Input Feature,Original customer demographic/profile feature
+UniqueSubs,int64,Customer Profile,Input Feature,Original customer demographic/profile feature
+ActiveSubs,int64,Customer Profile,Input Feature,Original customer demographic/profile feature
+ServiceArea,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+Handsets,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+HandsetModels,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+CurrentEquipmentDays,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+AgeHH1,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+AgeHH2,float64,Customer Profile,Input Feature,Original customer demographic/profile feature
+ChildrenInHH,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+HandsetRefurbished,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+HandsetWebCapable,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+TruckOwner,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+RVOwner,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+Homeownership,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+BuysViaMailOrder,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+RespondsToMailOffers,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+OptOutMailings,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+NonUSTravel,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+OwnsComputer,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+HasCreditCard,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+RetentionCalls,int64,Customer Profile,Input Feature,Original customer demographic/profile feature
+RetentionOffersAccepted,int64,Customer Profile,Input Feature,Original customer demographic/profile feature
+NewCellphoneUser,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+NotNewCellphoneUser,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+ReferralsMadeBySubscriber,int64,Customer Profile,Input Feature,Original customer demographic/profile feature
+IncomeGroup,int64,Customer Profile,Input Feature,Original customer demographic/profile feature
+OwnsMotorcycle,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+AdjustmentsToCreditRating,int64,Customer Profile,Input Feature,Original customer demographic/profile feature
+HandsetPrice,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+MadeCallToRetentionTeam,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+CreditRating,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+PrizmCode,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+Occupation,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+MaritalStatus,str,Raw Categorical,Exclude Raw (Use WOE),Raw categorical retained for traceability; use corresponding *_woe feature for supervised model input
+ServiceArea_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature ServiceArea
+ChildrenInHH_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature ChildrenInHH
+HandsetRefurbished_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature HandsetRefurbished
+HandsetWebCapable_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature HandsetWebCapable
+TruckOwner_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature TruckOwner
+RVOwner_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature RVOwner
+Homeownership_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature Homeownership
+BuysViaMailOrder_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature BuysViaMailOrder
+RespondsToMailOffers_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature RespondsToMailOffers
+OptOutMailings_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature OptOutMailings
+NonUSTravel_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature NonUSTravel
+OwnsComputer_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature OwnsComputer
+HasCreditCard_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature HasCreditCard
+NewCellphoneUser_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature NewCellphoneUser
+NotNewCellphoneUser_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature NotNewCellphoneUser
+OwnsMotorcycle_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature OwnsMotorcycle
+HandsetPrice_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature HandsetPrice
+MadeCallToRetentionTeam_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature MadeCallToRetentionTeam
+CreditRating_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature CreditRating
+PrizmCode_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature PrizmCode
+Occupation_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature Occupation
+MaritalStatus_woe,float64,WOE Encoded Categorical,Input Feature,WOE encoding fitted on train FraudFlag for raw categorical feature MaritalStatus
+FraudFlag,various,Target / Label,Leakage (Exclude),"Target variables to be predicted, excluded from feature matrices to prevent leakage"
+FraudType,various,Target / Label,Leakage (Exclude),"Target variables to be predicted, excluded from feature matrices to prevent leakage"
+Churn,various,Target / Label,Leakage (Exclude),"Target variables to be predicted, excluded from feature matrices to prevent leakage"

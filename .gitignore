@@ -232,3 +232,11 @@ draft.ipynb
 .codegraph
 
 outputs/supervised/mlruns
+outputs/supervised/psi_details/
+
+# Local editor/report byproducts not needed for source review
+*.swp
+*.swo
+*.tmp
+*.bak
+.typst-cache/

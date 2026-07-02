@@ -1,0 +1,3 @@
+variable,psi,status,type,missing_train,missing_holdout
+P_fraud,0.025895658270647978,stable,numeric,0.0,0.0
+DTS,0.010133423728960974,stable,numeric,0.0,0.0

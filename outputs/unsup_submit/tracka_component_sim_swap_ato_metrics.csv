@@ -1,0 +1,5 @@
+component,score_column,target,auc,pr_auc,recall_at_4pct,recall_at_5pct,sim_swap_ato_count,evaluated_rows,status
+iso,iso_rank_pct,sim_swap_ato,,,,,,0,missing_holdout_labels
+lof,lof_rank_pct,sim_swap_ato,,,,,,0,missing_holdout_labels
+blend,anomaly_score,sim_swap_ato,,,,,,0,missing_holdout_labels
+graph_adjusted,graph_adjusted_anomaly_score,sim_swap_ato,,,,,,0,missing_holdout_labels

@@ -1,0 +1,23 @@
+{
+  "kyc_fast_cutoff": 1000.0,
+  "kyc_reject_cutoff": 766.0,
+  "fraud_review_cutoff_p": 0.0912052117263843,
+  "fraud_decline_cutoff_p": 1.0,
+  "fraud_stepup_cutoff_p": 0.0082675685832393,
+  "fraud_review_cutoff_dts_q05": 766.0,
+  "credit_low_cutoff": 858.0,
+  "credit_high_cutoff": 1000.0,
+  "expected_review_rate": 0.05,
+  "expected_extreme_rate": 0.005,
+  "manual_review_rate": 0.04065,
+  "decline_or_block_rate": 0.01065,
+  "manual_review_or_decline_rate": 0.0513,
+  "step_up_authentication_rate": 0.1683,
+  "approve_rate": 0.7804,
+  "total_fraud_intervention_rate": 0.2196,
+  "kyc_fast_rate": 0.52955,
+  "kyc_reject_or_enhanced_review_rate": 0.0513,
+  "credit_low_device_risk_rate": 0.52955,
+  "credit_fraud_review_or_step_up_rate": 0.1101,
+  "final_model": "xgb_tuned"
+}

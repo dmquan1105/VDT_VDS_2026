@@ -1,0 +1,38 @@
+{
+  "output_dir": "outputs/unsup_submit",
+  "label_source": null,
+  "warning": "Holdout labels with CustomerID, FraudFlag, FraudType were not found; sim_swap_ato AUC/recall metrics are marked missing.",
+  "component_score_columns": {
+    "iso": "iso_rank_pct",
+    "lof": "lof_rank_pct",
+    "blend": "anomaly_score",
+    "graph_adjusted": "graph_adjusted_anomaly_score"
+  },
+  "train_eval_component_score_columns": {
+    "iso": "iso_rank_pct",
+    "lof": "lof_rank_pct",
+    "blend_90_10": "anomaly_score",
+    "graph_neighbor": "neighbor_anomaly_rank_pct",
+    "graph_adjusted": "graph_adjusted_anomaly_score"
+  },
+  "created_files": [
+    "outputs/unsup_submit/tracka_component_scores_holdout.csv",
+    "outputs/unsup_submit/tracka_iso_submission.csv",
+    "outputs/unsup_submit/tracka_lof_submission.csv",
+    "outputs/unsup_submit/tracka_blend_submission.csv",
+    "outputs/unsup_submit/tracka_graph_adjusted_submission.csv",
+    "outputs/unsup_submit/tracka_component_sim_swap_ato_metrics.csv",
+    "outputs/unsup_submit/tracka_train_component_scores.csv",
+    "outputs/unsup_submit/tracka_train_component_sim_swap_ato_metrics.csv",
+    "outputs/unsup_submit/tracka_train_blend_weight_sweep.csv"
+  ],
+  "label_candidates_checked": [
+    "data/dts_holdout_labeled.csv",
+    "data/dts_holdout_answer.csv",
+    "data/dts_holdout_answer_key.csv",
+    "data/holdout_answer_key.csv",
+    "outputs/dts_holdout_labeled.csv",
+    "outputs/holdout_answer_key.csv",
+    "outputs/trackA_holdout_answer_key.csv"
+  ]
+}
